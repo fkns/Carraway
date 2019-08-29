@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/src" isTestSource="false" packagePrefix="App\" />
       <sourceFolder url="file://$MODULE_DIR$/app/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/erusev/parsedown" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/cache" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/container" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/psr/log" />
@@ -30,8 +31,14 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/polyfill-php73" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/routing" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/service-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/translation-contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/twig-bridge" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/twig-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/var-exporter" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/yaml" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/twig/twig" />
+      <excludeFolder url="file://$MODULE_DIR$/var/cache" />
+      <excludeFolder url="file://$MODULE_DIR$/var/log" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -1,0 +1,18 @@
+<ul>
+    {% if articles.isFirstPage == false %}
+        <li><a href="{{ path("public_#{pagename}", {title: title, 'page': 1}) }}">First</a></li>
+    {% endif %}
+
+    {% if articles.isFirstPage == false %}
+        <li><a href="{{ path("public_#{pagename}", {title: title, 'page': page - 1}) }}">Prev</a></li>
+    {% endif %}
+
+    {% if articles.isLastPage == false %}
+        <li><a href="{{ path("public_#{pagename}", {title: title, 'page': page + 1}) }}">Next</a></li>
+    {% endif %}
+
+    {% if articles.isLastPage == false %}
+        <li><a href="{{ path("public_#{pagename}", {title: title, 'page': articles.lastpage}) }}">Last</a></li>
+    {% endif %}
+</ul>
+

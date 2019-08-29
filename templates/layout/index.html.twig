@@ -1,0 +1,24 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block contents %}
+    <h1 class="title">
+        Carraway
+    </h1>
+
+    <p class="subtitle">
+        <a href=".">A simple flat-file CMS.</a>
+    </p>
+
+    <h2>Static Page</h2>
+    <ul>
+        <li><a href="{{ path('public_static', {'pageName': 'about'}) }}">About</a></li>
+    </ul>
+
+    <h2>Articles</h2>
+    <ol>
+        {% for article in articles %}
+            <li><a href="{{ path('public_article', {'permalink': article.permalink}) }}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ol>
+    {% include 'components/pager.html.twig' with {pagename: 'page', title: 'page', articles: articles, page: 1} %}
+{% endblock %}

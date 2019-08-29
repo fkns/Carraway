@@ -1,0 +1,17 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}{{ tag.name }}{% endblock %}
+
+{% block contents %}
+    <h1 class="title">
+        #{{ tag.name }}
+    </h1>
+
+    <ul>
+        {% for article in articles %}
+            <li><a href="{{ path('public_article', {'permalink': article.permalink}) }}">{{ article.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+    {% include 'components/pager.html.twig' with {pagename: 'tag', title: tag.name, articles: articles, page: page} %}
+{% endblock %}

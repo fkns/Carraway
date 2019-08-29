@@ -1,0 +1,35 @@
+parameters:
+  app.directory.markdown: '%kernel.project_dir%/%env(MARKDOWN_PATH)%'
+  app.fastlyServiceId: '%kernel.project_dir%/%env(FASTLY_SERVICE_ID)%'
+  app.fastlyKey: '%kernel.project_dir%/%env(FASTLY_KEY)%'
+
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  App\:
+    resource: '../src/*'
+    exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+  App\Controller\:
+    resource: '../src/Controller'
+    tags: ['controller.service_arguments']
+
+  App\EventListener\ResponseListener:
+    tags:
+      - { name: kernel.event_listener, event: kernel.response }
+
+  App\Factory\ArticleCollectionFactory:
+    arguments: ['@App\Service\MarkdownToHtmlConverter', '@twig', '%app.directory.markdown%']
+
+  App\Service\FileDumper:
+    arguments: ['%app.directory.markdown%']
+
+  App\Command\CacheClearCommand:
+    arguments: ['@cache_clearer', '@App\CacheHandler\Fastly', '@filesystem']
+    tags:
+      - { name: console.command, event: carraway:article:create }
+
+  App\CacheHandler\Fastly:
+    arguments: ['%app.fastlyServiceId%']

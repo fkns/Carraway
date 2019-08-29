@@ -1,0 +1,21 @@
+{% extends 'Layout/base.html.twig' %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block contents %}
+    <h1 class="title">{{ article.title }}</h1>
+
+    <p class="subtitle"><a
+                href="{{ path('public_category', {'title': article.category.name}) }}">{{ article.category.name }}</a>
+    </p>
+
+    <ul>
+        {% for tag in article.tags %}
+            <li><a href="{{ path('public_tag', {'title': tag.name}) }}">#{{ tag.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <div class="field">
+        {{ article.html|raw }}
+    </div>
+{% endblock %}
