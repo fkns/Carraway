@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+    volumes:
+      - ${SYMFONY_APP_PATH}:/var/www/symfony
+      - ./logs/nginx/:/var/log/nginx
+  php:
+    build:
+      context: ./docker/php
+      args:
+        TIMEZONE: ${TIMEZONE}
+        GIT_EMAIL: ${GIT_EMAIL}
+        GIT_NAME: ${GIT_NAME}
+    volumes:
+      - ${SYMFONY_APP_PATH}:/var/www/symfony
+#      - ./logs/symfony:/var/www/symfony/app/logs
